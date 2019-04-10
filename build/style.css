@@ -1,0 +1,122 @@
+:root {
+  --podkit-font-color: #000;
+  --podkit-font-highlight-color: hsl(8, 100%, 56%);
+  --podkit-bg-color: hsl(8, 100%, 86%);
+  --podkit-bg-mid-color: hsl(8, 100%, 79%);
+  --podkit-bg-shadow-color: hsl(8, 100%, 76%);
+}
+
+.var-blue {
+  --podkit-font-color: #000;
+  --podkit-font-highlight-color: hsl(209, 100%, 56%);
+  --podkit-bg-color: hsl(209, 100%, 86%);
+  --podkit-bg-mid-color: hsl(209, 100%, 79%);
+  --podkit-bg-shadow-color: hsl(209, 100%, 76%);
+}
+
+.podkit-block {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  padding: 1em;
+  font-family: sans-serif;
+  background-color: var(--podkit-bg-color);
+  box-shadow: 5px 5px 0 var(--podkit-bg-mid-color),
+    10px 10px 0 var(--podkit-bg-shadow-color);
+}
+
+.podkit-logo,
+.podkit-img {
+  grid-row: span 2;
+  overflow: hidden;
+}
+
+.podkit-logo img,
+.podkit-img img {
+  display: block;
+}
+
+.podkit-info {
+  margin-left: 1em;
+  color: var(--podkit-font-color);
+}
+
+.podkit-info > * {
+  margin: 0;
+  font-weight: lighter;
+}
+
+.podkit-nameplate,
+.podkit-cta {
+  font-size: 80%;
+}
+
+.podkit-nameplate {
+  margin-bottom: -0.25em;
+}
+
+.podkit-title {
+  font-size: 200%;
+}
+
+.podkit-description {
+  grid-column: span 2;
+  margin-top: 1em;
+  line-height: 1.3em;
+}
+
+.podkit-description p {
+  margin: 0;
+  padding-bottom: 1em;
+  font-weight: lighter;
+}
+
+.podkit-description p:last-of-type {
+  padding-bottom: 0;
+}
+
+.podkit-cta {
+  grid-column: span 2;
+  display: flex;
+  padding-top: 1em;
+  font-weight: normal;
+}
+
+.podkit-cta a::before {
+  display: inline-block;
+  margin: -3px 0.75em -3px -3px;
+  padding: 0.25em 0.85em 0.1em 1.25em;
+  content: "▶";
+  font-size: 0.8em;
+  line-height: 2.6em;
+  background: white;
+  border-radius: 50%;
+  border: 3px solid var(--podkit-bg-color);
+}
+
+.podkit-cta a,
+.entry .entry-content .podkit-cta a {
+  margin-left: -3px;
+  padding-right: 1.5em;
+  text-decoration: none;
+  color: var(--podkit-font-highlight-color);
+  background: white;
+  border-radius: 1.5em;
+  border: 3px solid var(--podkit-bg-color);
+}
+
+.podkit-cta a:focus::before,
+.podkit-cta a:hover::before {
+  color: white;
+  background-color: var(--podkit-font-highlight-color);
+}
+
+.podkit-block.alignwide .podkit-description,
+.podkit-block.alignfull .podkit-description {
+  grid-column: 2;
+  margin-left: 1em;
+}
+
+.podkit-block.alignfull {
+  padding: 3em;
+  box-shadow: none;
+}
