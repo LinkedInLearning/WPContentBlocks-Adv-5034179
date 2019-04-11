@@ -179,6 +179,13 @@ registerBlockType("podkit/editable", {
 
     var epsiodeTitle = props.attributes.epsiodeTitle,
         className = props.className;
+
+    var onChangeEpisodeTitle = function onChangeEpisodeTitle(newEpisodeTitle) {
+      setAttributes({
+        epsiodeTitle: newEpisodeTitle
+      });
+    };
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "".concat(className, " podkit-block podkit-editable")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
@@ -194,7 +201,8 @@ registerBlockType("podkit/editable", {
       className: "podkit-title"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: __("Podcast episode title", "podkit"),
-      value: epsiodeTitle
+      value: epsiodeTitle,
+      onChange: onChangeEpisodeTitle
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-cta"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
@@ -202,6 +210,7 @@ registerBlockType("podkit/editable", {
     }, __("Like & Subscribe!", "podkit")))));
   },
   save: function save(props) {
+    var epsiodeTitle = props.attributes.epsiodeTitle;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-block podkit-static"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
@@ -215,7 +224,9 @@ registerBlockType("podkit/editable", {
       className: "podkit-nameplate"
     }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
       className: "podkit-title"
-    }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: props.attributes.epsiodeTitle
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-cta"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: "/subscribe"

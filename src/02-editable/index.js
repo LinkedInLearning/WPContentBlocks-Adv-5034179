@@ -27,6 +27,10 @@ registerBlockType("podkit/editable", {
       className
     } = props;
 
+    const onChangeEpisodeTitle = newEpisodeTitle => {
+      setAttributes({ epsiodeTitle: newEpisodeTitle});
+    };
+
     return (
       <div className={`${className} podkit-block podkit-editable`}>
         <figure className="podkit-logo">
@@ -40,6 +44,7 @@ registerBlockType("podkit/editable", {
             <RichText 
               placeholder={__("Podcast episode title", "podkit")}
               value={epsiodeTitle}
+              onChange={onChangeEpisodeTitle}
             />
           </h3>
           <div className="podkit-cta">
@@ -50,6 +55,9 @@ registerBlockType("podkit/editable", {
     );
   },
   save: props => {
+    const {
+      attributes: { epsiodeTitle }
+    } = props;
     return (
       <div className="podkit-block podkit-static">
         <figure className="podkit-logo">
@@ -60,7 +68,7 @@ registerBlockType("podkit/editable", {
             {__("The Binaryville Podcast", "podkit")}
           </div>
           <h3 className="podkit-title">
-            {__("The Binaryville Podcast", "podkit")}
+            <RichText.Content value={props.attributes.epsiodeTitle} />
           </h3>
           <div className="podkit-cta">
             <a href="/subscribe">{__("Like & Subscribe!", "podkit")}</a>
