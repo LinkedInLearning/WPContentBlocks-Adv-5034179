@@ -26,8 +26,6 @@ registerBlockType("podkit/media", {
   },
 
   edit: props => {
-    // Props parameter holds all the info.
-    console.info(props);
 
     // Lift info from props and populate various constants.
     const {
@@ -43,7 +41,6 @@ registerBlockType("podkit/media", {
 
     // Grab imageObject, set the value of episodeImage to imageObject.sizes.podkitFeatImg.url.
     const onImageSelect = imageObject => {
-      console.info(imageObject);
       setAttributes({ episodeImage: imageObject.sizes.podkitFeatImg.url });
     };
 
