@@ -56,6 +56,10 @@ registerBlockType("podkit/editable", {
     );
   },
   save: props => {
+    const {
+      attributes: { epsiodeTitle }
+    } = props;
+
     return (
       <div className="podkit-block podkit-static">
         <figure className="podkit-logo">
@@ -66,7 +70,7 @@ registerBlockType("podkit/editable", {
             {__("The Binaryville Podcast", "podkit")}
           </div>
           <h3 className="podkit-title">
-            <RichText.Content value={props.attributes.epsiodeTitle} />
+            <RichText.Content value={epsiodeTitle} />
           </h3>
           <div className="podkit-cta">
             <a href="/subscribe">{__("Like & Subscribe!", "podkit")}</a>
