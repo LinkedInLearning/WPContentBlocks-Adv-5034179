@@ -9,6 +9,13 @@ registerBlockType("podkit/editable", {
   title: __("Custom Title", "podkit"),
   icon: { src: Logo },
   category: "podkit",
+  attributes: {
+    epsiodeTitle: {
+      type: "string",
+      source: "html",
+      selector: ".podkit-title"
+    }
+  },
 
   edit: props => {
     // Props parameter holds all the info.
@@ -16,6 +23,7 @@ registerBlockType("podkit/editable", {
 
     // Lift info from props and populate various constants.
     const {
+      attributes: { epsiodeTitle },
       className
     } = props;
 
@@ -31,6 +39,7 @@ registerBlockType("podkit/editable", {
           <h3 className="podkit-title">
             <RichText 
               placeholder={__("Podcast episode title", "podkit")}
+              value={epsiodeTitle}
             />
           </h3>
           <div className="podkit-cta">

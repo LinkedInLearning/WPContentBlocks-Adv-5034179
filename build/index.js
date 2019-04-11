@@ -166,11 +166,19 @@ registerBlockType("podkit/editable", {
     src: _bv_logo_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
   },
   category: "podkit",
+  attributes: {
+    epsiodeTitle: {
+      type: "string",
+      source: "html",
+      selector: ".podkit-title"
+    }
+  },
   edit: function edit(props) {
     // Props parameter holds all the info.
     console.info(props); // Lift info from props and populate various constants.
 
-    var className = props.className;
+    var epsiodeTitle = props.attributes.epsiodeTitle,
+        className = props.className;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "".concat(className, " podkit-block podkit-editable")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
@@ -185,7 +193,8 @@ registerBlockType("podkit/editable", {
     }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
       className: "podkit-title"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
-      placeholder: __("Podcast episode title", "podkit")
+      placeholder: __("Podcast episode title", "podkit"),
+      value: epsiodeTitle
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-cta"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
