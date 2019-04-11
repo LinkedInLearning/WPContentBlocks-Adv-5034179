@@ -178,7 +178,8 @@ registerBlockType("podkit/editable", {
     console.info(props); // Lift info from props and populate various constants.
 
     var epsiodeTitle = props.attributes.epsiodeTitle,
-        className = props.className;
+        className = props.className,
+        setAttributes = props.setAttributes;
 
     var onChangeEpisodeTitle = function onChangeEpisodeTitle(newEpisodeTitle) {
       setAttributes({
@@ -210,7 +211,6 @@ registerBlockType("podkit/editable", {
     }, __("Like & Subscribe!", "podkit")))));
   },
   save: function save(props) {
-    var epsiodeTitle = props.attributes.epsiodeTitle;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-block podkit-static"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {

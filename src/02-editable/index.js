@@ -24,7 +24,8 @@ registerBlockType("podkit/editable", {
     // Lift info from props and populate various constants.
     const {
       attributes: { epsiodeTitle },
-      className
+      className,
+      setAttributes
     } = props;
 
     const onChangeEpisodeTitle = newEpisodeTitle => {
@@ -55,9 +56,6 @@ registerBlockType("podkit/editable", {
     );
   },
   save: props => {
-    const {
-      attributes: { epsiodeTitle }
-    } = props;
     return (
       <div className="podkit-block podkit-static">
         <figure className="podkit-logo">
