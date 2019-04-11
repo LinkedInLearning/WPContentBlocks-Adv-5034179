@@ -24,6 +24,9 @@ registerBlockType("podkit/editable", {
           <img src={logoWhiteURL} alt="logo" />
         </figure>
         <div className="podkit-info">
+          <div className="podkit-nameplate">
+            {__("The Binaryville Podcast", "podkit")}
+          </div>
           <h3 className="podkit-title">
             {__("The Binaryville Podcast", "podkit")}
           </h3>
@@ -41,6 +44,9 @@ registerBlockType("podkit/editable", {
           <img src={logoWhiteURL} alt="logo" />
         </figure>
         <div className="podkit-info">
+          <div className="podkit-nameplate">
+            {__("The Binaryville Podcast", "podkit")}
+          </div>
           <h3 className="podkit-title">
             {__("The Binaryville Podcast", "podkit")}
           </h3>
