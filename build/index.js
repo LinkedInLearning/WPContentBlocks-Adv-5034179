@@ -141,6 +141,81 @@ registerBlockType("podkit/static", {
 
 /***/ }),
 
+/***/ "./src/02-editable/index.js":
+/*!**********************************!*\
+  !*** ./src/02-editable/index.js ***!
+  \**********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _bv_logo_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../bv-logo.svg */ "./src/bv-logo.svg");
+/* harmony import */ var _bv_logo_white_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../bv-logo-white.svg */ "./src/bv-logo-white.svg");
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var RichText = wp.editor.RichText;
+
+
+registerBlockType("podkit/editable", {
+  title: __("Custom Title", "podkit"),
+  icon: {
+    src: _bv_logo_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
+  },
+  category: "podkit",
+  edit: function edit(props) {
+    // Props parameter holds all the info.
+    console.info(props); // Lift info from props and populate various constants.
+
+    var className = props.className;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "".concat(className, " podkit-block podkit-editable")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
+      className: "podkit-logo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: _bv_logo_white_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: "logo"
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-info"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-nameplate"
+    }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      className: "podkit-title"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: __("Podcast episode title", "podkit")
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-cta"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: "#"
+    }, __("Like & Subscribe!", "podkit")))));
+  },
+  save: function save(props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-block podkit-static"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
+      className: "podkit-logo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: _bv_logo_white_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: "logo"
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-info"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-nameplate"
+    }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      className: "podkit-title"
+    }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "podkit-cta"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: "/subscribe"
+    }, __("Like & Subscribe!", "podkit")))));
+  }
+});
+
+/***/ }),
+
 /***/ "./src/bv-logo-white.svg":
 /*!*******************************!*\
   !*** ./src/bv-logo-white.svg ***!
@@ -218,9 +293,11 @@ var SvgBvLogo = function SvgBvLogo(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _01_static__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./01-static */ "./src/01-static/index.js");
+/* harmony import */ var _02_editable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./02-editable */ "./src/02-editable/index.js");
 /**
  * Import blocks as components.
  */
+
 
 
 /***/ }),

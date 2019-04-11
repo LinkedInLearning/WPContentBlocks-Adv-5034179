@@ -111,7 +111,8 @@ function podkit_register_blocks() {
 
 	// Array of block created in this plugin.
 	$blocks = [
-		'podkit/static'
+		'podkit/static',
+		'podkit/editable'
 	];
 	
 	// Loop through $blocks and register each block with the same script and styles.
