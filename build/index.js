@@ -298,6 +298,9 @@ registerBlockType("podkit/media", {
 
     var onImageSelect = function onImageSelect(imageObject) {
       console.info(imageObject);
+      setAttributes({
+        episodeImage: imageObject.sizes.podkitFeatImg.url
+      });
     };
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {

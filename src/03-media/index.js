@@ -44,6 +44,7 @@ registerBlockType("podkit/media", {
     // Grab imageObject, set the value of episodeImage to imageObject.sizes.podkitFeatImg.url.
     const onImageSelect = imageObject => {
       console.info(imageObject);
+      setAttributes({ episodeImage: imageObject.sizes.podkitFeatImg.url });
     };
 
     return (
