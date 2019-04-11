@@ -49,7 +49,7 @@ registerBlockType("podkit/media", {
 
     return (
       <div className={`${className} podkit-block podkit-editable`}>
-        <figure className="podkit-logo">
+        <figure className="podkit-img">
           <img src={episodeImage} alt="logo" />
           <MediaUpload
             onSelect={onImageSelect}
@@ -87,7 +87,7 @@ registerBlockType("podkit/media", {
 
     return (
       <div className="podkit-block podkit-static">
-        <figure className="podkit-logo">
+        <figure className="podkit-img">
           <img src={episodeImage} alt="logo" />
         </figure>
         <div className="podkit-info">

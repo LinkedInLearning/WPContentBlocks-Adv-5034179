@@ -237,8 +237,6 @@ registerBlockType("podkit/editable", {
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/03-media/index.js":
 /*!*******************************!*\
   !*** ./src/03-media/index.js ***!
@@ -308,7 +306,7 @@ registerBlockType("podkit/media", {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "".concat(className, " podkit-block podkit-editable")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
-      className: "podkit-logo"
+      className: "podkit-img"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: episodeImage,
       alt: "logo"
@@ -345,7 +343,7 @@ registerBlockType("podkit/media", {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-block podkit-static"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
-      className: "podkit-logo"
+      className: "podkit-img"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: episodeImage,
       alt: "logo"
@@ -367,7 +365,6 @@ registerBlockType("podkit/media", {
 
 /***/ }),
 
->>>>>>> 02_06e
 /***/ "./src/bv-logo-white.svg":
 /*!*******************************!*\
   !*** ./src/bv-logo-white.svg ***!
@@ -446,20 +443,14 @@ var SvgBvLogo = function SvgBvLogo(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _01_static__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./01-static */ "./src/01-static/index.js");
 /* harmony import */ var _02_editable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./02-editable */ "./src/02-editable/index.js");
-<<<<<<< HEAD
-=======
 /* harmony import */ var _03_media__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./03-media */ "./src/03-media/index.js");
->>>>>>> 02_06e
 /**
  * Import blocks as components.
  */
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 02_06e
 /***/ }),
 
 /***/ "@wordpress/element":
