@@ -1,5 +1,6 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 import { ReactComponent as Logo } from "../bv-logo.svg";
 import logoWhiteURL from "../bv-logo-white.svg";
@@ -28,7 +29,9 @@ registerBlockType("podkit/editable", {
             {__("The Binaryville Podcast", "podkit")}
           </div>
           <h3 className="podkit-title">
-            {__("The Binaryville Podcast", "podkit")}
+            <RichText 
+              placeholder={__("Podcast episode title", "podkit")}
+            />
           </h3>
           <div className="podkit-cta">
             <a href="#">{__("Like & Subscribe!", "podkit")}</a>
