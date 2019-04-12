@@ -386,6 +386,8 @@ __webpack_require__.r(__webpack_exports__);
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
     MediaUpload = _wp$editor.MediaUpload,
     RichText = _wp$editor.RichText,
     URLInputButton = _wp$editor.URLInputButton;
@@ -422,6 +424,10 @@ registerBlockType("podkit/extended", {
       source: "attribute",
       selector: ".podkit-cta a",
       attribute: "href"
+    },
+    descriptionAlignment: {
+      type: "string",
+      default: "left"
     }
   },
   supports: {
@@ -434,6 +440,7 @@ registerBlockType("podkit/extended", {
         episodeImage = _props$attributes.episodeImage,
         episodeDescription = _props$attributes.episodeDescription,
         episodeURL = _props$attributes.episodeURL,
+        descriptionAlignment = _props$attributes.descriptionAlignment,
         className = props.className,
         setAttributes = props.setAttributes; // Grab newEpisodeTitle, set the value of episodeTitle to newEpisodeTitle.
 
@@ -462,11 +469,21 @@ registerBlockType("podkit/extended", {
       setAttributes({
         episodeURL: newEpisodeURL
       });
+    }; // Grab newDescriptionAlignment, set the value of descriptionAlignment to newDescriptionAlignment.
+
+
+    var onChangeDescriptionAlignment = function onChangeDescriptionAlignment(newDescriptionAlignment) {
+      setAttributes({
+        descriptionAlignment: newDescriptionAlignment
+      });
     };
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "".concat(className, " podkit-block podkit-editable")
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+      value: descriptionAlignment,
+      onChange: onChangeDescriptionAlignment
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
       className: "podkit-logo"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: episodeImage,
@@ -498,6 +515,9 @@ registerBlockType("podkit/extended", {
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-description"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      style: {
+        textAlign: descriptionAlignment
+      },
       multiline: "p",
       placeholder: __("Episode description", "podkit"),
       onChange: onChangeEpisodeDescription,
@@ -518,7 +538,8 @@ registerBlockType("podkit/extended", {
         epsiodeTitle = _props$attributes2.epsiodeTitle,
         episodeImage = _props$attributes2.episodeImage,
         episodeDescription = _props$attributes2.episodeDescription,
-        episodeURL = _props$attributes2.episodeURL;
+        episodeURL = _props$attributes2.episodeURL,
+        descriptionAlignment = _props$attributes2.descriptionAlignment;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-block podkit-static"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
@@ -535,7 +556,8 @@ registerBlockType("podkit/extended", {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: epsiodeTitle
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "podkit-description"
+      className: "podkit-description",
+      style: "text-align:".concat(descriptionAlignment)
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       multiline: "p",
       value: episodeDescription

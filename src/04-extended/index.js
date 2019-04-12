@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { MediaUpload, RichText, URLInputButton } = wp.editor;
+const { BlockControls, AlignmentToolbar, MediaUpload, RichText, URLInputButton } = wp.editor;
 const { IconButton } = wp.components;
 
 import { ReactComponent as Logo } from "../bv-logo.svg";
@@ -34,6 +34,10 @@ registerBlockType("podkit/extended", {
       source: "attribute",
       selector: ".podkit-cta a",
       attribute: "href"
+    },
+    descriptionAlignment: {
+      type: "string",
+      default: "left"
     }
   },
   supports: {
@@ -48,7 +52,8 @@ registerBlockType("podkit/extended", {
         epsiodeTitle, 
         episodeImage, 
         episodeDescription, 
-        episodeURL },
+        episodeURL,
+        descriptionAlignment },
       className,
       setAttributes
     } = props;
@@ -73,8 +78,19 @@ registerBlockType("podkit/extended", {
       setAttributes({ episodeURL: newEpisodeURL });
     };
 
+    // Grab newDescriptionAlignment, set the value of descriptionAlignment to newDescriptionAlignment.
+    const onChangeDescriptionAlignment = newDescriptionAlignment => {
+      setAttributes({ descriptionAlignment: newDescriptionAlignment });
+    };
+
     return (
       <div className={`${className} podkit-block podkit-editable`}>
+        <BlockControls>
+          <AlignmentToolbar 
+            value={descriptionAlignment}
+            onChange={onChangeDescriptionAlignment}
+          />
+        </BlockControls>
         <figure className="podkit-logo">
           <img src={episodeImage} alt="logo" />
           <MediaUpload
@@ -106,6 +122,7 @@ registerBlockType("podkit/extended", {
         </div>
         <div className="podkit-description">
           <RichText
+            style={{ textAlign: descriptionAlignment }}
             multiline="p"
             placeholder={__("Episode description", "podkit")}
             onChange={onChangeEpisodeDescription}
@@ -132,7 +149,8 @@ registerBlockType("podkit/extended", {
         epsiodeTitle, 
         episodeImage, 
         episodeDescription, 
-        episodeURL }
+        episodeURL,
+        descriptionAlignment }
     } = props;
 
     return (
@@ -148,7 +166,7 @@ registerBlockType("podkit/extended", {
             <RichText.Content value={epsiodeTitle} />
           </h3>
         </div>
-        <div className="podkit-description">
+        <div className="podkit-description" style={`text-align:${descriptionAlignment}`}>
           <RichText.Content
             multiline="p"
             value={episodeDescription}
