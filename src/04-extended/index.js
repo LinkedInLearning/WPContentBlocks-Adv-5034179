@@ -55,6 +55,21 @@ registerBlockType("podkit/extended", {
   supports: {
     align: [ 'wide', 'full' ]
   },
+  styles: [
+    {
+        name: 'default',
+        label: __( 'Red (default)', "podkit" ),
+        isDefault: true
+    },
+    {
+        name: 'blue',
+        label: __( 'Blue', "podkit" )
+    },
+    {
+        name: 'yellow',
+        label: __( 'Yellow', "podkit" )
+    }
+  ],
 
   edit: props => {
 

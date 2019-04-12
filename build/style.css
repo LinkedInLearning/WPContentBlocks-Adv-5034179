@@ -6,12 +6,18 @@
   --podkit-bg-shadow-color: hsl(8, 100%, 76%);
 }
 
-.var-blue {
-  --podkit-font-color: #000;
+.is-style-blue {
   --podkit-font-highlight-color: hsl(209, 100%, 56%);
   --podkit-bg-color: hsl(209, 100%, 86%);
   --podkit-bg-mid-color: hsl(209, 100%, 79%);
   --podkit-bg-shadow-color: hsl(209, 100%, 76%);
+}
+
+.is-style-yellow {
+  --podkit-font-highlight-color: hsl(49.7, 93.5%, 56%);
+  --podkit-bg-color: hsl(49.7, 93.5%, 86%);
+  --podkit-bg-mid-color: hsl(49.7, 93.5%, 79%);
+  --podkit-bg-shadow-color: hsl(49.7, 93.5%, 76%);
 }
 
 .podkit-block {

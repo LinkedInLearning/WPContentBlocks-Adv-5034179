@@ -440,6 +440,17 @@ registerBlockType("podkit/extended", {
   supports: {
     align: ['wide', 'full']
   },
+  styles: [{
+    name: 'default',
+    label: __('Red (default)', "podkit"),
+    isDefault: true
+  }, {
+    name: 'blue',
+    label: __('Blue', "podkit")
+  }, {
+    name: 'yellow',
+    label: __('Yellow', "podkit")
+  }],
   edit: function edit(props) {
     // Lift info from props and populate various constants.
     var _props$attributes = props.attributes,
