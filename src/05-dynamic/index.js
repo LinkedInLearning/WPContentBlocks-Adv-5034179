@@ -62,14 +62,14 @@ registerBlockType("podkit/dynamic", {
             {__("The Binaryville Podcast", "podkit")}
           </div>
           <h3 className="podkit-title">
-            {__("Podcast episode title", "podkit")}
+            <RichText.Content value={post.title.rendered} />
           </h3>
         </div>
         <div className="podkit-description">
-          {__("Episode description", "podkit")}
+        <RichText.Content value={post.excerpt.rendered} />
         </div>
         <div className="podkit-cta">
-          <a href="#">{__("Listen now!", "podkit")}</a>
+          <a href={post.link}>{__("Listen now!", "podkit")}</a>
         </div>
       </div>
     );
