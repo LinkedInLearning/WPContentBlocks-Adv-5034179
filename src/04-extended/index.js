@@ -36,6 +36,9 @@ registerBlockType("podkit/extended", {
       attribute: "href"
     }
   },
+  supports: {
+    align: [ 'wide', 'full' ]
+  },
 
   edit: props => {
 
