@@ -692,12 +692,12 @@ registerBlockType("podkit/dynamic", {
       className: "podkit-nameplate"
     }, __("The Binaryville Podcast", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
       className: "podkit-title"
-    }, __("Podcast episode title", "podkit"))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }, post.title.rendered)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-description"
-    }, __("Episode description", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }, post.excerpt.rendered), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-cta"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
-      href: "#"
+      href: post.link
     }, __("Listen now!", "podkit"))));
   }),
   save: function save(props) {
