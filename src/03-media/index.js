@@ -1,7 +1,9 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { MediaUpload, RichText } = wp.editor;
-const { Button } = wp.components;
+const { Button, IconButton } = wp.components;
+
+console.info(wp.components);
 
 import { ReactComponent as Logo } from "../bv-logo.svg";
 import logoWhiteURL from "../bv-logo-white.svg";
@@ -46,16 +48,20 @@ registerBlockType("podkit/media", {
 
     return (
       <div className={`${className} podkit-block podkit-editable`}>
-        <figure className="podkit-img">
+        <figure className="podkit-logo">
           <img src={episodeImage} alt="logo" />
           <MediaUpload
             onSelect={onImageSelect}
             type="image"
             value={episodeImage}
             render={({ open }) => (
-              <Button onClick={ open }>
-                Open Media Library
-              </Button> 
+              <IconButton
+                className="podkit-logo__button"
+                onClick={open}
+                icon="format-image"
+                showTooltip="true"
+                label={__("Change image.", "podkit")}
+              /> 
             )}
           />
         </figure>
@@ -84,7 +90,7 @@ registerBlockType("podkit/media", {
 
     return (
       <div className="podkit-block podkit-static">
-        <figure className="podkit-img">
+        <figure className="podkit-logo">
           <img src={episodeImage} alt="logo" />
         </figure>
         <div className="podkit-info">
