@@ -112,7 +112,7 @@ registerBlockType("podkit/extended", {
         <div className="podkit-cta">
           {/* Note: href is NOT populated with attribute to avoid
               accidental navigation from within the editor. */}
-          <a href="#">{__("Like & Subscribe!", "podkit")}</a>
+          <a href="#">{__("Listen now!", "podkit")}</a>
           <URLInputButton
             className="podkit-dropdown__input"
             label={__("Episode URL", "podkit")}
