@@ -1,5 +1,6 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 const { withSelect } = wp.data;
 
 import { ReactComponent as Logo } from "../bv-logo.svg";
@@ -61,14 +62,14 @@ registerBlockType("podkit/dynamic", {
             {__("The Binaryville Podcast", "podkit")}
           </div>
           <h3 className="podkit-title">
-            {post.title.rendered}
+            {__("Podcast episode title", "podkit")}
           </h3>
         </div>
         <div className="podkit-description">
-          {post.excerpt.rendered}
+          {__("Episode description", "podkit")}
         </div>
         <div className="podkit-cta">
-          <a href={post.link}>{__("Listen now!", "podkit")}</a>
+          <a href="#">{__("Listen now!", "podkit")}</a>
         </div>
       </div>
     );
