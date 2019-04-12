@@ -89,7 +89,7 @@ function podkit_register_blocks() {
 	wp_register_script(
 		'podkit-editor-script',											// label
 		plugins_url( 'build/index.js', __FILE__ ),						// script file
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),		// dependencies
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', "wp-data" ),		// dependencies
 		filemtime( plugin_dir_path( __FILE__ ) . 'build/index.js' )		// set version as file last modified time
 	);
 
@@ -115,6 +115,7 @@ function podkit_register_blocks() {
 		'podkit/editable',
 		'podkit/media',
 		'podkit/extended'
+
 	];
 	
 	// Loop through $blocks and register each block with the same script and styles.
@@ -125,6 +126,13 @@ function podkit_register_blocks() {
 			'style' => 'podkit-front-end-styles',						// Calls registered stylesheet above
 		) );	  
 	}
+
+	// Register dynamic block.
+	register_block_type( 'podkit/dynamic', array(
+		'editor_script' => 'podkit-editor-script',
+		'editor_style' => 'podkit-editor-styles',
+		'style' => 'podkit-front-end-styles',
+	) );
 
 	if ( function_exists( 'wp_set_script_translations' ) ) {
 	/**
