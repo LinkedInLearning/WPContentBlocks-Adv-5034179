@@ -1,7 +1,16 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { BlockControls, AlignmentToolbar, MediaUpload, RichText, URLInputButton } = wp.editor;
-const { IconButton } = wp.components;
+const { 
+  AlignmentToolbar,
+  BlockControls,
+  ColorPalette,
+  InspectorControls,  
+  MediaUpload, 
+  RichText, 
+  URLInputButton } = wp.editor;
+const { 
+  IconButton,
+  PanelBody } = wp.components;
 
 import { ReactComponent as Logo } from "../bv-logo.svg";
 import logoWhiteURL from "../bv-logo-white.svg";
@@ -38,6 +47,9 @@ registerBlockType("podkit/extended", {
     descriptionAlignment: {
       type: "string",
       default: "left"
+    },
+    backgroundColor: {
+      type: "string"
     }
   },
   supports: {
@@ -53,7 +65,8 @@ registerBlockType("podkit/extended", {
         episodeImage, 
         episodeDescription, 
         episodeURL,
-        descriptionAlignment },
+        descriptionAlignment,
+        backgroundColor },
       className,
       setAttributes
     } = props;
@@ -83,8 +96,33 @@ registerBlockType("podkit/extended", {
       setAttributes({ descriptionAlignment: newDescriptionAlignment });
     };
 
-    return (
-      <div className={`${className} podkit-block podkit-editable`}>
+    // Grab newBackgroundColor, set the value of backgroundColor to newBackgroundColor.
+    const onChangeBackgroundColor = newBackgroundColor => {
+      setAttributes({ backgroundColor: newBackgroundColor });
+    };
+
+    return [
+      <InspectorControls>
+        <PanelBody title={ __( 'Color settings', "podkit" ) }>
+          <div className="components-base-control">
+            <div className="components-base-control__field">
+              <label className="components-base-control__label">
+                {__("Background color", "podkit")}
+              </label>
+              <ColorPalette
+                value={backgroundColor}
+                onChange={onChangeBackgroundColor} 
+              />
+            </div>
+          </div>
+        </PanelBody>
+      </InspectorControls>,
+      <div 
+        className={`${className} podkit-block podkit-expanded`}
+        style={{
+          background: backgroundColor
+        }}
+        >
         <BlockControls>
           <AlignmentToolbar 
             value={descriptionAlignment}
@@ -141,7 +179,7 @@ registerBlockType("podkit/extended", {
           />
         </div>
       </div>
-    );
+    ];
   },
   save: props => {
     const {
@@ -150,11 +188,16 @@ registerBlockType("podkit/extended", {
         episodeImage, 
         episodeDescription, 
         episodeURL,
-        descriptionAlignment }
+        descriptionAlignment,
+        backgroundColor }
     } = props;
 
     return (
-      <div className="podkit-block podkit-static">
+      <div 
+        className="podkit-block podkit-expanded"
+        style={{
+          background: backgroundColor
+        }}>
         <figure className="podkit-logo">
           <img src={episodeImage} alt="logo" />
         </figure>

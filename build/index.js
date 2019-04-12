@@ -386,12 +386,16 @@ __webpack_require__.r(__webpack_exports__);
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
-    BlockControls = _wp$editor.BlockControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    BlockControls = _wp$editor.BlockControls,
+    ColorPalette = _wp$editor.ColorPalette,
+    InspectorControls = _wp$editor.InspectorControls,
     MediaUpload = _wp$editor.MediaUpload,
     RichText = _wp$editor.RichText,
     URLInputButton = _wp$editor.URLInputButton;
-var IconButton = wp.components.IconButton;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    PanelBody = _wp$components.PanelBody;
 
 
 registerBlockType("podkit/extended", {
@@ -428,6 +432,9 @@ registerBlockType("podkit/extended", {
     descriptionAlignment: {
       type: "string",
       default: "left"
+    },
+    backgroundColor: {
+      type: "string"
     }
   },
   supports: {
@@ -441,6 +448,7 @@ registerBlockType("podkit/extended", {
         episodeDescription = _props$attributes.episodeDescription,
         episodeURL = _props$attributes.episodeURL,
         descriptionAlignment = _props$attributes.descriptionAlignment,
+        backgroundColor = _props$attributes.backgroundColor,
         className = props.className,
         setAttributes = props.setAttributes; // Grab newEpisodeTitle, set the value of episodeTitle to newEpisodeTitle.
 
@@ -476,10 +484,31 @@ registerBlockType("podkit/extended", {
       setAttributes({
         descriptionAlignment: newDescriptionAlignment
       });
+    }; // Grab newBackgroundColor, set the value of backgroundColor to newBackgroundColor.
+
+
+    var onChangeBackgroundColor = function onChangeBackgroundColor(newBackgroundColor) {
+      setAttributes({
+        backgroundColor: newBackgroundColor
+      });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "".concat(className, " podkit-block podkit-editable")
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: __('Color settings', "podkit")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, __("Background color", "podkit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
+      value: backgroundColor,
+      onChange: onChangeBackgroundColor
+    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "".concat(className, " podkit-block podkit-expanded"),
+      style: {
+        background: backgroundColor
+      }
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
       value: descriptionAlignment,
       onChange: onChangeDescriptionAlignment
@@ -531,7 +560,7 @@ registerBlockType("podkit/extended", {
       label: __("Episode URL", "podkit"),
       onChange: onChangeEpisodeURL,
       url: episodeURL
-    })));
+    })))];
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,
@@ -539,9 +568,13 @@ registerBlockType("podkit/extended", {
         episodeImage = _props$attributes2.episodeImage,
         episodeDescription = _props$attributes2.episodeDescription,
         episodeURL = _props$attributes2.episodeURL,
-        descriptionAlignment = _props$attributes2.descriptionAlignment;
+        descriptionAlignment = _props$attributes2.descriptionAlignment,
+        backgroundColor = _props$attributes2.backgroundColor;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "podkit-block podkit-static"
+      className: "podkit-block podkit-expanded",
+      style: {
+        background: backgroundColor
+      }
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
       className: "podkit-logo"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
