@@ -47,6 +47,26 @@ function podkit_custom_sizes( $sizes ) {
 	) );
 }
 
+/**
+ * Add the featured image to the REST API response.
+ */
+add_filter( 'rest_prepare_post', 'podkit_fetured_image_json', 10, 3 );
+
+function podkit_fetured_image_json( $data, $post, $context ) {
+	// Get the featured image id from the REST API response.
+	$featured_image_id = $data->data['featured_media']; 
+
+	// Get the URL for a specific image size based on the image ID.
+	$featured_image_url = wp_get_attachment_image_src( $featured_image_id, 'podkitFeatImg' ); // get url of the original size
+
+	// If we have a URL, add it to the REST API response.
+	if( $featured_image_url ) {
+		$data->data['featured_image_podkitFeatImg_url'] = $featured_image_url[0];
+	}
+
+	return $data;
+}
+
 /** 
  * Add custom "Podkit" block category
  * 
@@ -148,6 +168,25 @@ function podkit_register_blocks() {
 }
 
 /**
+ * Build classes based on block attributes.
+ * Returns string of classes.
+ * 
+ * $attributes - array - Block attributes.
+ */
+function podkit_block_classes( $attributes ) {
+	$classes = null;
+	if ( $attributes['align'] ) {
+		$classes = 'align' . $attributes['align'] . ' ';
+	}
+
+	if ( $attributes['className'] ) {
+		$classes .= $attributes['className']; 
+	}
+
+	return $classes;
+}
+
+/**
  * Serve up featured image is available, otherwise serve up logo.
  * Returns <img> element.
  * 
@@ -169,6 +208,7 @@ function podkit_post_img( $post ) {
  * $content - Block inner content.
  */
 function podkit_dynamic_render_callback( $attributes, $content ) {
+
 	global $post;
 
 	// Get the latest posts using wp_get_recent_posts().
@@ -193,25 +233,26 @@ function podkit_dynamic_render_callback( $attributes, $content ) {
 	setup_postdata($post);
 
 	return sprintf(
-		'<div class="podkit-block podkit-dynamic">
+		'<div class="podkit-block podkit-dynamic %1$s">
 			<figure class="podkit-logo">
-				%1$s
+				%2$s
 			</figure>
 			<div class="podkit-info">
 				<div class="podkit-nameplate">
 					The Binaryville Podcast
 				</div>
 				<h3 class="podkit-title">
-					%2$s
+					%3$s
 				</h3>
 			</div>
 			<div class="podkit-description">
-				%3$s
+				%4$s
 			</div>
 			<div class="podkit-cta">
-				<a href="%4$s">%5$s</a>
+				<a href="%5$s">%6$s</a>
 			</div>
 		</div>',
+		podkit_block_classes( $attributes ),
 		podkit_post_img( $post ),
 		esc_html( get_the_title($post) ),
 		esc_html( get_the_excerpt($post) ),
