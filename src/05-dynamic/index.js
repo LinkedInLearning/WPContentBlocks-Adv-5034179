@@ -55,7 +55,7 @@ registerBlockType("podkit/dynamic", {
     return (
       <div className={`${className} podkit-block podkit-dynamic`} >
         <figure className="podkit-logo">
-          <img src={logoWhiteURL} alt="logo" />
+          <img src={post.featured_image_podkitFeatImg_url} alt="logo" />
         </figure>
         <div className="podkit-info">
           <div className="podkit-nameplate">

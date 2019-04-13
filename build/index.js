@@ -685,7 +685,7 @@ registerBlockType("podkit/dynamic", {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
       className: "podkit-logo"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      src: _bv_logo_white_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+      src: post.featured_image_podkitFeatImg_url,
       alt: "logo"
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-info"
