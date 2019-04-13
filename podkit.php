@@ -132,6 +132,7 @@ function podkit_register_blocks() {
 		'editor_script' => 'podkit-editor-script',
 		'editor_style' => 'podkit-editor-styles',
 		'style' => 'podkit-front-end-styles',
+		'render_callback' => 'podkit_dynamic_render_callback'
 	) );
 
 	if ( function_exists( 'wp_set_script_translations' ) ) {
@@ -144,4 +145,81 @@ function podkit_register_blocks() {
 	wp_set_script_translations( 'podkit-editor-script', 'podkit', plugin_dir_path( __FILE__ ) . '/languages' );
 	}
 
+}
+
+/**
+ * Serve up featured image is available, otherwise serve up logo.
+ * Returns <img> element.
+ * 
+ * $post - object - The post object.
+ */ 
+function podkit_post_img( $post ) {
+	$podkit_img = get_the_post_thumbnail( $post, 'podkitFeatImg' );
+	if ( empty( $podkit_img ) ) {
+		$url = plugins_url( "src/bv-logo-white.svg", __FILE__ );
+		$podkit_img = '<img src="' . $url . '" alt="Binaryville Podcast Logo" />';
+	}
+	return $podkit_img;
+}
+
+/**
+ * Render the saved output from the dynamic block.
+ * 
+ * $attributes - array - Block attributes.
+ * $content - Block inner content.
+ */
+function podkit_dynamic_render_callback( $attributes, $content ) {
+	global $post;
+
+	// Get the latest posts using wp_get_recent_posts().
+	$recent_posts = wp_get_recent_posts ( array(
+		'category' => 2,
+		'numberposts' => 1,
+		'post_status' => 'publish',
+	) );
+	
+	// Check if any posts were returned, if not, say so.
+	if ( 0 === count( $recent_posts ) ) {
+		return 'No posts.';
+	}
+
+	// Get the post ID for the first post returned.
+	$post_id = $recent_posts[0]['ID'];
+	
+	// Get the post object based on post ID.
+	$post = get_post( $post_id );
+
+	// Setup postdata so regular template functions work.
+	setup_postdata($post);
+
+	return sprintf(
+		'<div class="podkit-block podkit-dynamic">
+			<figure class="podkit-logo">
+				%1$s
+			</figure>
+			<div class="podkit-info">
+				<div class="podkit-nameplate">
+					The Binaryville Podcast
+				</div>
+				<h3 class="podkit-title">
+					%2$s
+				</h3>
+			</div>
+			<div class="podkit-description">
+				%3$s
+			</div>
+			<div class="podkit-cta">
+				<a href="%4$s">%5$s</a>
+			</div>
+		</div>',
+		podkit_post_img( $post ),
+		esc_html( get_the_title($post) ),
+		esc_html( get_the_excerpt($post) ),
+		esc_url( get_the_permalink($post) ),
+		__("Listen now!", "podkit")
+	);
+
+	// Reset postdata to avoid conflicts.
+	wp_reset_postdata();
+	
 }
