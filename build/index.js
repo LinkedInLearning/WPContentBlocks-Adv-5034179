@@ -680,12 +680,17 @@ registerBlockType("podkit/dynamic", {
 
     var post = posts[0];
     console.info(post);
+
+    var featImg = function featImg(imageURL) {
+      return imageURL ? imageURL : _bv_logo_white_svg__WEBPACK_IMPORTED_MODULE_2__["default"];
+    };
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "".concat(className, " podkit-block podkit-dynamic")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
       className: "podkit-logo"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      src: post.featured_image_podkitFeatImg_url,
+      src: featImg(post.featured_image_podkitFeatImg_url),
       alt: "logo"
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "podkit-info"
