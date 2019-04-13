@@ -50,7 +50,7 @@ function podkit_custom_sizes( $sizes ) {
 /**
  * Add the featured image to the REST API response.
  */
-add_filter( 'rest_prepare_post', 'podkit_fetured_image_json', 10, 3 );
+// add_filter( 'rest_prepare_post', 'podkit_fetured_image_json', 10, 3 );
 
 function podkit_fetured_image_json( $data, $post, $context ) {
 	// Get the featured image id from the REST API response.
