@@ -47,6 +47,26 @@ function podkit_custom_sizes( $sizes ) {
 	) );
 }
 
+/**
+ * Add the featured image to the REST API response.
+ */
+// add_filter( 'rest_prepare_post', 'podkit_fetured_image_json', 10, 3 );
+
+function podkit_fetured_image_json( $data, $post, $context ) {
+	// Get the featured image id from the REST API response.
+	$featured_image_id = $data->data['featured_media']; 
+
+	// Get the URL for a specific image size based on the image ID.
+	$featured_image_url = wp_get_attachment_image_src( $featured_image_id, 'podkitFeatImg' ); // get url of the original size
+
+	// If we have a URL, add it to the REST API response.
+	if( $featured_image_url ) {
+		$data->data['featured_image_podkitFeatImg_url'] = $featured_image_url[0];
+	}
+
+	return $data;
+}
+
 /** 
  * Add custom "Podkit" block category
  * 
