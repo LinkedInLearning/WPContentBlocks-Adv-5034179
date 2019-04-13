@@ -168,6 +168,25 @@ function podkit_register_blocks() {
 }
 
 /**
+ * Build classes based on block attributes.
+ * Returns string of classes.
+ * 
+ * $attributes - array - Block attributes.
+ */
+function podkit_block_classes( $attributes ) {
+	$classes = null;
+	if ( $attributes['align'] ) {
+		$classes = 'align' . $attributes['align'] . ' ';
+	}
+
+	if ( $attributes['className'] ) {
+		$classes .= $attributes['className']; 
+	}
+
+	return $classes;
+}
+
+/**
  * Serve up featured image is available, otherwise serve up logo.
  * Returns <img> element.
  * 
@@ -189,6 +208,7 @@ function podkit_post_img( $post ) {
  * $content - Block inner content.
  */
 function podkit_dynamic_render_callback( $attributes, $content ) {
+
 	global $post;
 
 	// Get the latest posts using wp_get_recent_posts().
@@ -213,25 +233,26 @@ function podkit_dynamic_render_callback( $attributes, $content ) {
 	setup_postdata($post);
 
 	return sprintf(
-		'<div class="podkit-block podkit-dynamic">
+		'<div class="podkit-block podkit-dynamic %1$s">
 			<figure class="podkit-logo">
-				%1$s
+				%2$s
 			</figure>
 			<div class="podkit-info">
 				<div class="podkit-nameplate">
 					The Binaryville Podcast
 				</div>
 				<h3 class="podkit-title">
-					%2$s
+					%3$s
 				</h3>
 			</div>
 			<div class="podkit-description">
-				%3$s
+				%4$s
 			</div>
 			<div class="podkit-cta">
-				<a href="%4$s">%5$s</a>
+				<a href="%5$s">%6$s</a>
 			</div>
 		</div>',
+		podkit_block_classes( $attributes ),
 		podkit_post_img( $post ),
 		esc_html( get_the_title($post) ),
 		esc_html( get_the_excerpt($post) ),
