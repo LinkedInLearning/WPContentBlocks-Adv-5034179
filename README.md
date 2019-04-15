@@ -1,10 +1,6 @@
 # WordPress Content Blocks: Advanced
 
-This is the repository for the LinkedIn Learning course "WordPress Content Blocks: Advanced". The full course is available from [LinkedIn Learning](LICOURSEURL).
-
-[![COURSENAME](COURSEIMAGE)](LICOURSEURL)
-
-[COURSEDESCRIPTION]
+This is the repository for the LinkedIn Learning course "WordPress Content Blocks: Advanced". The full course is available from [LinkedIn Learning](https://linkedin.com/learning).
 
 ## Instructions
 
