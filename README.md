@@ -1,6 +1,6 @@
 # WordPress Content Blocks: Advanced
 
-This is the repository for the LinkedIn Learning course "WordPress Content Blocks: Advanced". The full course is available from [LinkedIn Learning](https://linkedin.com/learning).
+This is the repository for the LinkedIn Learning course [WordPress Content Blocks: Advanced](https://www.linkedin.com/learning/wordpress-developing-blocks-with-gutenberg/). The full course is available from [LinkedIn Learning](https://linkedin.com/learning).
 
 ## Instructions
 
