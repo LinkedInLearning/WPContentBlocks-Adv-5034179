@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "devDependencies": {
     "@svgr/webpack": "^4.1.0",
-    "@wordpress/scripts": "^3.1.0",
+    "@wordpress/scripts": "^26.3.0",
     "url-loader": "^1.1.2"
   },
   "scripts": {
